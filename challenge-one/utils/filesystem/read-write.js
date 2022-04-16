@@ -4,15 +4,23 @@ import fs from 'fs'
 
 class FilesSystem {
 
-    constructor(){}
+    constructor() { }
 
-    read(path){
-        const data = JSON.parse(fs.readFileSync(path))
-        return data
+    async read(path) {
+        try {
+            const data = JSON.parse(await fs.readFileSync(path))
+            return data
+        } catch (error) {
+            throw new Error(error)
+        }
     }
 
-    write(path, data){
-        fs.writeFileSync(path, data, 'utf-8')
+    async write(path, data) {
+        try {
+            await fs.writeFileSync(path, data, 'utf-8')
+        } catch (error) {
+            throw new Error(error)
+        }
     }
 }
 
