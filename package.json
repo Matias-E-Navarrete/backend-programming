@@ -1,0 +1,35 @@
+{
+  "name": "backend-programming",
+  "version": "1.0.0",
+  "description": "Coder house challenges",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node app.js",
+    "test": "npm test -- -u -t='#FF831B'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matias-E-Navarrete/backend-programming.git"
+  },
+  "keywords": [
+    "backend",
+    "nodejs",
+    "node",
+    "typescrypt",
+    "test",
+    "jest",
+    "javascript"
+  ],
+  "author": "Matias E. Navarrete",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Matias-E-Navarrete/backend-programming/issues"
+  },
+  "homepage": "https://github.com/Matias-E-Navarrete/backend-programming#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1"
+  },
+  "type": "module"
+}
