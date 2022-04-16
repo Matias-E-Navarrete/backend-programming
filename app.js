@@ -22,23 +22,22 @@ const product3 = {
     thumbnail: 'www.product-url.com'
 }
 
-const productCreated = productRepository.save(product)
-productRepository.save(product2)
-productRepository.save(product3)
+const productCreated = await productRepository.save(product)
+await productRepository.save(product2)
+await productRepository.save(product3)
 
 console.log("productCreated", productCreated)
 
 
-const productFound = productRepository.getById(1)
+const productFound = await productRepository.getById(1)
 console.table(productFound)
 
-const productsFound = productRepository.getAll()
+const productsFound = await productRepository.getAll()
 console.table(productsFound)
 
-const productDeleted = productRepository.deleteById(2)
+const productDeleted = await productRepository.deleteById(2)
 console.table(productDeleted)
 
-
-const productsDeleted = productRepository.deleteAll()
+const productsDeleted = await productRepository.deleteAll()
 console.table(productsDeleted)
 

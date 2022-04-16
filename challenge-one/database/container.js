@@ -11,38 +11,58 @@ const productsPath = path.join(__dirname + '/products.json')
 
 class Container {
 
-    save(product) {
-        let productsDatabase = filesystem.read(productsPath)
-        productsDatabase.push(product)
-        filesystem.write(productsPath, JSON.stringify(productsDatabase))
+    async save(product) {
+        try {
+            let productsDatabase = await filesystem.read(productsPath)
+            productsDatabase.push(product)
+            filesystem.write(productsPath, JSON.stringify(productsDatabase))
+        } catch (error) {
+            throw new Error(error)
+        }
     }
 
-    getById(id) {
-        const productsDatabase = filesystem.read(productsPath)
-        const product = productsDatabase.find(product => product.id === id)
+    async getById(id) {
+        try {
+            const productsDatabase = await filesystem.read(productsPath)
+            const product = productsDatabase.find(product => product.id === id)
 
-        const result = product ? product : null
+            const result = product ? product : null
 
-        return result
+            return result
+        } catch (error) {
+            throw new Error(error)
+        }
     }
 
-    getAll() {
-        const productsDatabase = filesystem.read(productsPath)
+    async getAll() {
+        try {
+            const productsDatabase = await filesystem.read(productsPath)
+            return productsDatabase
 
-        return productsDatabase
+        } catch (error) {
+            throw new Error(error)
+        }
     }
 
-    deleteById(id) {
-        const productsDatabase = filesystem.read(productsPath)
-        const products = productsDatabase.filter(product => product.id !== id)
+    async deleteById(id) {
+        try {
+            const productsDatabase = await filesystem.read(productsPath)
+            const products = productsDatabase.filter(product => product.id !== id)
 
-        filesystem.write(productsPath, JSON.stringify(products))
+            await filesystem.write(productsPath, JSON.stringify(products))
+
+        } catch (error) {
+            throw new Error(error)
+        }
     }
 
-    deleteAll() {
-        const products = [];
-
-        filesystem.write(productsPath, JSON.stringify(products))
+    async deleteAll() {
+        try {
+            const products = [];
+            await filesystem.write(productsPath, JSON.stringify(products))
+        } catch (error) {
+            throw new Error(error)
+        }
     }
 
 }
